@@ -19,4 +19,4 @@ build: check
 	poetry build
 
 run:
-	poetry run python3 -m scripts.gendiff.py -h
+	poetry run python3 -m gendif.scripts.gendiff -h

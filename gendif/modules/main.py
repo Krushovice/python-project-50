@@ -1,7 +1,4 @@
 import json
-import sys
-
-sys.path.append('gendif/')
 
 
 def generate_diff(file_path1, file_path2):
@@ -33,11 +30,3 @@ def generate_diff(file_path1, file_path2):
             }
 
     return output
-
-
-file1 = 'file1.json'
-file2 = 'file2.json'
-output = generate_diff(file1, file2)
-print(json.dumps(output, indent=2))
-
-# print(generate_diff('gendif/file1.json', 'gendif/file2.json'))
