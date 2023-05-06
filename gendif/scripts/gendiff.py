@@ -1,5 +1,8 @@
 import argparse
-from modules.main import generate_diff
+import sys
+
+sys.path.append('gendif/')
+
 
 parser = argparse.ArgumentParser(
                     prog='gendiff',
@@ -17,4 +20,5 @@ print(args)
 
 
 if __name__ == '__main__':
+    from gendif import generate_diff
     print(generate_diff('gendif/file1.json', 'gendif/file2.json'))
