@@ -1,27 +1,43 @@
 import json
+import sys
+
+sys.path.append('gendif/')
 
 
 def generate_diff(file_path1, file_path2):
-    with open(file_path1, 'r', encoding='utf-8') as file_1:
-        data1 = json.load(file_1)
-    with open(file_path2, 'r', encoding='utf-8') as file_2:
-        data2 = json.load(file_2)
+    with open(file_path1, 'r') as f1, open(file_path2, 'r') as f2:
+        json1 = json.load(f1)
+        json2 = json.load(f2)
 
-    difference = (set(data1) - set(data2))
-    intersect = (set(data1) & set(data2))
-    list_of_dif = []
-    for k in difference:
-        list_of_dif.append(k)
-    list_of_inter = []
-    for k in intersect:
-        list_of_inter.append(k)
+    output = {}
+    # Check for keys present in file1 but not in file2
+    for key in json1.keys():
+        if key not in json2:
+            output[key] = {
+                '- ' + key: json1[key]
+            }
 
-    return f"""
-            - {list_of_dif[0]}: {data1[list_of_dif[0]]}
-            - {list_of_dif[1]}: {data1[list_of_dif[1]]}
-            + {list_of_inter[0]}: {data1[list_of_inter[0]]}
-            + {list_of_inter[1]}: {data1[list_of_inter[1]]}
-    """
+    # Check for keys present in file2 but not in file1
+    for key in json2.keys():
+        if key not in json1:
+            output[key] = {
+                '+ ' + key: json2[key]
+            }
+
+    # Check for keys with different values
+    for key in json1.keys() & json2.keys():
+        if json1[key] != json2[key]:
+            output[key] = {
+                '- ' + key: json1[key],
+                '+ ' + key: json2[key]
+            }
+
+    return output
 
 
-print(generate_diff('gendif/file1.json', 'gendif/file2.json'))
+file1 = 'file1.json'
+file2 = 'file2.json'
+output = generate_diff(file1, file2)
+print(json.dumps(output, indent=2))
+
+# print(generate_diff('gendif/file1.json', 'gendif/file2.json'))
