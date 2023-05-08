@@ -1,18 +1,18 @@
 [tool.poetry]
 name = "hexlet-code"
 version = "0.1.0"
-description = ""
-authors = ["Krusovice kickstar69@yandex.ru"]
+description = "compare json files"
+authors = ["Krusovice <kickstar69@yandex.ru>"]
 readme = "README.md"
 packages = [
-  { include = "gendiff" },
+  { include = "gendif" },
 ]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 
 [tool.poetry.scripts]
-diff = 'scripts.gendiff:generate_diff'
+diff = 'gendif.scripts.gendiff:generate_diff'
 
 [build-system]
 requires = ["poetry-core"]

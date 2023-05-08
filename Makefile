@@ -19,4 +19,4 @@ build: check
 	poetry build
 
 run:
-	poetry run python3 -m gendif.scripts.gendiff -h
+	poetry run python3 -m gendif.scripts.gendiff file1.json file2.json

@@ -1,3 +1,5 @@
-from gendif.modules.main import generate_diff
+from .diff import generate_diff
 
-__all__ = ['generate_diff']
+__all__ = (
+    'generate_diff',
+)

@@ -1,13 +1,11 @@
 import argparse
-import sys
 import json
-
-sys.path.append('gendif/')
-
+from gendif.diff import generate_diff
 
 parser = argparse.ArgumentParser(
                     prog='gendiff',
-                    description='Compares two configuration files and shows a difference.'
+                    description="""Compares two configuration
+                    files and shows a difference."""
                     )
 # Позиционные аргументы
 parser.add_argument('first_file')
@@ -21,6 +19,5 @@ print(args)
 
 
 if __name__ == '__main__':
-    from gendif import generate_diff
-    diff = generate_diff('modules/file1.json', 'modules/file2.json')
+    diff = generate_diff('gendif/file1.json', 'gendif/file2.json')
     print(json.dumps(diff, indent=2))
