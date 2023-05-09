@@ -1,6 +1,6 @@
 import json
 from gendif.diff import generate_diff
-from parser import start_argparse
+from gendif.parser import start_argparse
 
 
 def main():
