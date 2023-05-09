@@ -1,6 +1,12 @@
 install:
 	poetry install
 
+package-install:
+	python3 -m pip install --user dist/*.whl
+
+package-reinstall:
+	pip install --force-reinstall dist/*.whl
+
 test:
 	poetry run pytest
 
@@ -18,5 +24,5 @@ check: selfcheck test lint
 build: check
 	poetry build
 
-run:
+run diff:
 	poetry run python3 -m gendif.scripts.gendiff file1.json file2.json
