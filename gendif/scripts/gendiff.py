@@ -1,10 +1,10 @@
 from gendif import generate_diff
-from gendif.parser import start_argparse
+# from gendif.parser import start_argparse
 
 
 def main():
     diff = generate_diff('file_path1', 'file_path2')
-    args = start_argparse()
+    # args = start_argparse()
     print(diff)
 
 
