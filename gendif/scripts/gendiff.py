@@ -1,4 +1,4 @@
-from gendif import generate_diff
+from gendif.diff import generate_diff
 # from gendif.parser import start_argparse
 
 
