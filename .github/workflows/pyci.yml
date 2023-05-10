@@ -27,7 +27,7 @@ jobs:
         run: |
           make lint
       - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v3.2.0
+        uses: paambaati/codeclimate-action@v4.0.0
         if: github.ref_name == 'main'
         env:
           HEXLET_PROJECT_50: ${{ secrets.HEXLET_PROJECT_50 }}
