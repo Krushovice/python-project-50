@@ -18,3 +18,5 @@ check:
 
 test-coverage:
 	poetry run pytest --cov=gendif tests/ --cov-report xml
+
+.PHONY: install build publish package-install lint check test-coverage
