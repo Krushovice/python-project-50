@@ -20,7 +20,7 @@ jobs:
         # make depends on poetry
       - name: Install dependencies
         run: |
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install poetry
           make install
       - name: Run linter
@@ -30,7 +30,7 @@ jobs:
         uses: paambaati/codeclimate-action@v4.0.0
         if: github.ref_name == 'main'
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID}}
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         with:
           coverageCommand: make test-coverage
           debug: true
