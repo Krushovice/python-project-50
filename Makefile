@@ -1,6 +1,9 @@
 install: # Для первого git clone
 	poetry install
 
+gendiff:
+	poetry run gendiff
+
 build: #  Сборка пакета
 	poetry build
 
@@ -17,6 +20,6 @@ check:
 	poetry run pytest -vv
 
 test-coverage:
-	poetry run pytest --cov=gendif tests/ --cov-report xml
+	poetry run pytest --cov=gendif --cov-report xml tests/
 
 .PHONY: install build publish package-install lint check test-coverage
