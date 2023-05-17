@@ -1,9 +1,6 @@
 install: # Для первого git clone
 	poetry install
 
-gendiff:
-	poetry run gendiff
-
 build: #  Сборка пакета
 	poetry build
 
@@ -14,10 +11,10 @@ package-install:
 	pip install --user --force-reinstall dist/*.whl
 
 lint:
-	poetry run flake8 gendif tests
+	poetry run flake8 gendif
 
-check:
-	poetry run pytest -vv
+test:
+	poetry run pytest
 
 test-coverage:
 	poetry run pytest --cov=gendif --cov-report xml tests/

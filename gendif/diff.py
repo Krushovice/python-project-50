@@ -13,8 +13,8 @@ def check_format(value):
 
 def get_diff_entry(key, value1, value2):
     if value1 != value2:
-        return [f'- {key}: {value1}', f'+ {key}: {value2}']
-    return [f'  {key}: {value1}']
+        return [f'  - {key}: {value1}', f'  + {key}: {value2}']
+    return [f'    {key}: {value1}']
 
 
 def generate_diff(file_path1, file_path2):
@@ -36,9 +36,9 @@ def generate_diff(file_path1, file_path2):
         if key in json1 and key in json2:
             result.extend(get_diff_entry(key, output[key], json2[key]))
         elif key in json1:
-            result.append(f'- {key}: {output[key]}')
+            result.append(f'  - {key}: {output[key]}')
         elif key in json2:
-            result.append(f'+ {key}: {output[key]}')
+            result.append(f'  + {key}: {output[key]}')
 
     result.append('}')
 
