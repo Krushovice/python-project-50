@@ -14,7 +14,7 @@ def get_path():
 @pytest.fixture()
 def coll():
     with open('tests/fixtures/expected_value', 'r') as f:
-        expected_value = f.read()
+        expected_value = f.read().strip()
         return expected_value
 
 
