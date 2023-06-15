@@ -1,6 +1,6 @@
-from gendif.formatters.stylish import stylish_format
-from gendif.formatters.simple import set_format
-from gendif.formatters.json import json_format
+from gendiff.formatters.stylish import stylish_format
+from gendiff.formatters.simple import set_format
+from gendiff.formatters.json import json_format
 
 
 def apply_format(diff_result, format):

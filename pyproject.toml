@@ -5,7 +5,7 @@ description = "compare json files"
 authors = ["Krusovice <kickstar69@yandex.ru>"]
 readme = "README.md"
 packages = [
-  { include = "gendif" },
+  { include = "gendiff" },
 ]
 
 [tool.poetry.dependencies]
@@ -18,7 +18,7 @@ pytest = "^7.3.1"
 flake8 = "^6.0.0"
 
 [tool.poetry.scripts]
-gendiff = "gendif.scripts.gendiff:main"
+gendiff = "gendiff.scripts.gendiff:main"
 
 [build-system]
 requires = ["poetry-core"]
