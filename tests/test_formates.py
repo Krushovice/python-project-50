@@ -13,7 +13,7 @@ from gendiff.formatters.formater import apply_format
     ),
     (
         f"{FIXTURES_PATH}/diff.txt",
-        f"{FIXTURES_PATH}/expected_val_for_simple.txt",
+        f"{FIXTURES_PATH}/expected_val_for_plain.txt",
         'plain'
     ),
     (

@@ -28,5 +28,5 @@ def walk(node, path=''):
     return '\n'.join(result)
 
 
-def set_format(diff_result: dict):
+def plain_format(diff_result: dict):
     return walk(diff_result)

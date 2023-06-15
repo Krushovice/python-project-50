@@ -25,7 +25,7 @@ import pytest
     (
         f"{FIXTURES_PATH}/file1.json",
         f"{FIXTURES_PATH}/file2.json",
-        f"{FIXTURES_PATH}/expected_val_for_simple.txt",
+        f"{FIXTURES_PATH}/expected_val_for_plain.txt",
         "plain"
     ),
     (
@@ -43,7 +43,7 @@ import pytest
     (
         f"{FIXTURES_PATH}/file1.yml",
         f"{FIXTURES_PATH}/file2.yml",
-        f"{FIXTURES_PATH}/expected_val_for_simple.txt",
+        f"{FIXTURES_PATH}/expected_val_for_plain.txt",
         "plain"
     ),
     (

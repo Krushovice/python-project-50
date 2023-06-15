@@ -2,7 +2,7 @@ import json
 import pytest
 from tests import FIXTURES_PATH
 from gendiff.formatters.stylish import value_to_str
-from gendiff.formatters.simple import to_str
+from gendiff.formatters.plain import to_str
 
 
 @pytest.fixture

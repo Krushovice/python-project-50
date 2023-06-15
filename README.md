@@ -19,3 +19,7 @@
 ## Compares two nested yaml
 
 [![asciicast](https://asciinema.org/a/wJR5ctQqBYX1UxpujR0LI3xnv.svg)](https://asciinema.org/a/wJR5ctQqBYX1UxpujR0LI3xnv)
+
+## Plain format
+
+[![asciicast](https://asciinema.org/a/OQoTLP9EVY6oxcWPysF6dbHsP.svg)](https://asciinema.org/a/OQoTLP9EVY6oxcWPysF6dbHsP)
