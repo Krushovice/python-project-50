@@ -2,7 +2,7 @@ import pytest
 import json
 from tests import FIXTURES_PATH
 from gendiff.formatters.stylish import build_line
-from gendiff.formatters.use_formatter import apply_format
+from gendiff.formatters.formater import apply_format
 
 
 @pytest.mark.parametrize("file, expected_path, format", [
