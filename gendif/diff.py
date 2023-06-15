@@ -1,44 +1,28 @@
-from gendif.parser import parse_file
-
-
-def check_format(value):
-    if value is True:
-        return 'true'
-    elif value is False:
-        return 'false'
-    elif value is None:
-        return 'null'
-    return value
-
-
-def get_diff_entry(key, value1, value2):
-    if value1 != value2:
-        return [f'  - {key}: {value1}', f'  + {key}: {value2}']
-    return [f'    {key}: {value1}']
-
-
-def generate_diff(file_path1, file_path2):
-    data1 = parse_file(file_path1)
-    data2 = parse_file(file_path2)
-
-    output = {}
-    for key in data1.keys():
-        output[key] = check_format(data1[key])
-
-    for key in data2.keys():
-        if key not in output:
-            output[key] = check_format(data2[key])
-
-    sorted_keys = sorted(output.keys())
-    result = ['{']
-    for key in sorted_keys:
-        if key in data1 and key in data2:
-            result.extend(get_diff_entry(key, output[key], data2[key]))
-        elif key in data1:
-            result.append(f'  - {key}: {output[key]}')
-        elif key in data2:
-            result.append(f'  + {key}: {output[key]}')
-
-    result.append('}')
-
-    return '\n'.join(result)
+def diff(dict1, dict2):
+    keys = sorted(dict1.keys() | dict2.keys())
+    added = dict2.keys() - dict1.keys()
+    removed = dict1.keys() - dict2.keys()
+    result = {}
+    for k in keys:
+        description = {'key': k}
+        if k in removed:
+            description['operation'] = 'removed'
+            description['value'] = dict1[k]
+        elif k in added:
+            description['operation'] = 'added'
+            description['value'] = dict2[k]
+        elif dict1[k] == dict2[k]:
+            description['operation'] = 'unchanged'
+            description['value'] = dict1[k]
+        elif all(
+            [isinstance(dict1[k], dict),
+             isinstance(dict2[k], dict)]
+        ):
+            description['operation'] = 'nested'
+            description['value'] = diff(dict1[k], dict2[k])
+        else:
+            description['operation'] = 'changed'
+            description['old'] = dict1[k]
+            description['new'] = dict2[k]
+        result[k] = description
+    return result

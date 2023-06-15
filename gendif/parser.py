@@ -1,16 +1,16 @@
-import json
+from pathlib import Path
 import yaml
-import os
+import json
 
 
-def parse_file(file_path):
-    _, ext = os.path.splitext(file_path)
+def get_content(path):
+    with open(path, "r") as data:
+        return parse(data.read(), Path(path).suffix[1:])
 
-    if ext == '.json':
-        with open(file_path, 'r') as file:
-            return json.load(file)
-    elif ext == '.yaml':
-        with open(file_path, 'r') as file:
-            return yaml.safe_load(file)
-    else:
-        raise ValueError("Invalid file format.")
+
+def parse(data, format: str):
+    if format == 'json':
+        return json.loads(data)
+    if format == 'yaml' or format == 'yml':
+        return yaml.safe_load(data)
+    raise Exception(f"No such method: {format}")
