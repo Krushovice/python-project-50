@@ -1,26 +1,18 @@
 import pytest
-from gendif import generate_diff
+import json
+from gendiff.diff import diff
+from tests import FIXTURES_PATH
 
 
-@pytest.fixture()
-def get_path():
-    paths = {'json1': 'tests/fixtures/file1.json',
-             'json2': 'tests/fixtures/file2.json',
-             'yaml1': 'tests/fixtures/file1.yaml',
-             'yaml2': 'tests/fixtures/file2.yaml',
-    }
-    return paths
-
-
-@pytest.fixture()
-def coll():
-    with open('tests/fixtures/expected_value', 'r') as f:
-        expected_value = f.read().strip()
-        return expected_value
-
-
-def test_output(coll, get_path):
-    check_json = generate_diff(get_path['json1'], get_path['json2'])
-    check_yaml = generate_diff(get_path['yaml1'], get_path['yaml2'])
-    assert check_json == coll
-    assert check_yaml == coll
+@pytest.mark.parametrize("file1, file2, expected_path", [
+    (
+        f"{FIXTURES_PATH}/example_file1.json",
+        f"{FIXTURES_PATH}/example_file2.json",
+        f"{FIXTURES_PATH}/simple_diff.txt",
+    ),
+])
+def test_diff(file1, file2, expected_path):
+    with open(expected_path, "r") as result, \
+         open(file1, "r") as content1, open(file2, "r") as content2:
+        diff_result = json.load(result)
+        assert diff(json.load(content1), json.load(content2)) == diff_result
