@@ -7,18 +7,18 @@ from gendiff.formatters.formater import apply_format
 
 @pytest.mark.parametrize("file, expected_path, format", [
     (
-        f"{FIXTURES_PATH}/diff.txt",
-        f"{FIXTURES_PATH}/expected_val_for_json.txt",
+        f"{FIXTURES_PATH}/diff",
+        f"{FIXTURES_PATH}/expected_val_for_json",
         'json'
     ),
     (
-        f"{FIXTURES_PATH}/diff.txt",
-        f"{FIXTURES_PATH}/expected_val_for_plain.txt",
+        f"{FIXTURES_PATH}/diff",
+        f"{FIXTURES_PATH}/expected_val_for_plain",
         'plain'
     ),
     (
-        f"{FIXTURES_PATH}/diff.txt",
-        f"{FIXTURES_PATH}/expected_val_for_stylish.txt",
+        f"{FIXTURES_PATH}/diff",
+        f"{FIXTURES_PATH}/expected_val_for_stylish",
         'stylish'
     ),
 ])

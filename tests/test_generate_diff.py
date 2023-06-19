@@ -7,49 +7,49 @@ import pytest
     (
         f"{FIXTURES_PATH}/example_file1.json",
         f"{FIXTURES_PATH}/example_file2.json",
-        f"{FIXTURES_PATH}/expected_val_for_example.txt",
+        f"{FIXTURES_PATH}/expected_val_for_example",
         "stylish"
     ),
     (
         f"{FIXTURES_PATH}/example_file1.yml",
         f"{FIXTURES_PATH}/example_file2.yml",
-        f"{FIXTURES_PATH}/expected_val_for_example.txt",
+        f"{FIXTURES_PATH}/expected_val_for_example",
         "stylish"
     ),
     (
         f"{FIXTURES_PATH}/file1.json",
         f"{FIXTURES_PATH}/file2.json",
-        f"{FIXTURES_PATH}/expected_val_for_stylish.txt",
+        f"{FIXTURES_PATH}/expected_val_for_stylish",
         "stylish"
     ),
     (
         f"{FIXTURES_PATH}/file1.json",
         f"{FIXTURES_PATH}/file2.json",
-        f"{FIXTURES_PATH}/expected_val_for_plain.txt",
+        f"{FIXTURES_PATH}/expected_val_for_plain",
         "plain"
     ),
     (
         f"{FIXTURES_PATH}/file1.json",
         f"{FIXTURES_PATH}/file2.json",
-        f"{FIXTURES_PATH}/expected_val_for_json.txt",
+        f"{FIXTURES_PATH}/expected_val_for_json",
         "json"
     ),
     (
         f"{FIXTURES_PATH}/file1.yml",
         f"{FIXTURES_PATH}/file2.yml",
-        f"{FIXTURES_PATH}/expected_val_for_stylish.txt",
+        f"{FIXTURES_PATH}/expected_val_for_stylish",
         "stylish"
     ),
     (
         f"{FIXTURES_PATH}/file1.yml",
         f"{FIXTURES_PATH}/file2.yml",
-        f"{FIXTURES_PATH}/expected_val_for_plain.txt",
+        f"{FIXTURES_PATH}/expected_val_for_plain",
         "plain"
     ),
     (
         f"{FIXTURES_PATH}/file1.yml",
         f"{FIXTURES_PATH}/file2.yml",
-        f"{FIXTURES_PATH}/expected_val_for_json.txt",
+        f"{FIXTURES_PATH}/expected_val_for_json",
         "json"
     ),
 ])
