@@ -11,8 +11,8 @@ import pytest
         "stylish"
     ),
     (
-        f"{FIXTURES_PATH}/file1_example.yml",
-        f"{FIXTURES_PATH}/file2_example.yml",
+        f"{FIXTURES_PATH}/example_file1.yml",
+        f"{FIXTURES_PATH}/example_file2.yml",
         f"{FIXTURES_PATH}/expected_val_for_example.txt",
         "stylish"
     ),
