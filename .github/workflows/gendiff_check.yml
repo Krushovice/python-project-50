@@ -1,37 +1,36 @@
-name: gendiff_check
+name: gendiff-check
 
-on: push
+on:
+  - push
+  - pull_request
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["^3.10"]
     steps:
-      - uses: actions/checkout@v2
-      - name: Install gnome-keyring
-        run: |
-          sudo apt install gnome-keyring
-      - name: Install poetry
-        run: |
-          pip install poetry
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
+          pip install poetry
           make install
-      - name: Run linter
+      - name: CC
+        uses: paambaati/codeclimate-action@v3.2.0
+        if: github.ref_name == 'main'
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: make test-coverage
+          debug: true
+      - name: flake8
         run: |
           make lint
-      - name: Run tests
+      - name: pytest
         run: |
-          make check
-      - name: Create Reporter
-        run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
-          ./cc-test-reporter before-build
-      - name: Test
-        run: |
-          make test-coverage
-      - name: Sending Reporter
-        env:
-          GITHUB_TOKEN: ${{ secrets.TEST_REPORTER_ID }}
-        run: |
-          ./cc-test-reporter after-build -r "$GITHUB_TOKEN"
+          make test
