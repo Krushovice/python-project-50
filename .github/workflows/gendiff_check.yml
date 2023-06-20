@@ -1,36 +1,37 @@
 name: gendiff_check
 
-on: push
+on:
+  - push
+  - pull_request
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # we want to test our package on several versions of Python
+        python-version: [3.10, 3.11]
     steps:
-      - uses: actions/checkout@v2
-      - name: Install gnome-keyring
-        run: |
-          sudo apt install gnome-keyring
-      - name: Install poetry
-        run: |
-          pip install poetry
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+        # make depends on poetry
       - name: Install dependencies
         run: |
+          pip install poetry
           make install
-      - name: Run linter
+      - name: Run linter and pytest
         run: |
           make lint
-      - name: Run tests
         run: |
-          make check
-      - name: Create Reporter
-        run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
-          ./cc-test-reporter before-build
+          make test
       - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@prefix-support
-        run: |
-          make test-coverage
-      - name: Sending Reporter
+        uses: paambaati/codeclimate-action@v3.2.0
+        if: github.ref_name == 'main'
         env:
-          GITHUB_TOKEN: ${{ secrets.CC_TEST_REPORTER_ID }}
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: make test-coverage
+          debug: true
