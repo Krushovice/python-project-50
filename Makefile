@@ -17,6 +17,6 @@ test:
 	poetry run pytest
 
 test-coverage:
-	poetry run pytest --cov=gendif --cov-report xml tests/
+	poetry run pytest --cov=gendiff --cov-report xml tests/
 
 .PHONY: install build publish package-install lint check test-coverage
