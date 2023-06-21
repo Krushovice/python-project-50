@@ -1,8 +1,29 @@
-# Difference of two json or yaml files
+# Общее описание
+
+This is my second project for hexlet
+It's Show differences between different files in yaml and json format.
+
+You can clone the repository with: <https://github.com/Krushovice/python-project-50>
+
+For this program you might need python = "^3.10" and prompt = "^0.4.1"
 
 ## Hexlet tests and linter status
 
-[![Actions Status](https://github.com/Krushovice/python-project-50/workflows/hexlet-check/badge.svg)](https://github.com/Krushovice/python-project-50/actions)  [![Maintainability](https://api.codeclimate.com/v1/badges/d41b9b1a511c0eb396b9/maintainability)](https://codeclimate.com/github/Krushovice/python-project-50/maintainability)  [![Test Coverage](https://api.codeclimate.com/v1/badges/d41b9b1a511c0eb396b9/test_coverage)](https://codeclimate.com/github/Krushovice/python-project-50/test_coverage)
+[![Actions Status](https://github.com/Krushovice/python-project-50/workflows/hexlet-check/badge.svg)](https://github.com/Krushovice/python-project-50/actions)  [![Maintainability](https://api.codeclimate.com/v1/badges/d41b9b1a511c0eb396b9/maintainability)](https://codeclimate.com/github/Krushovice/python-project-50/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/d41b9b1a511c0eb396b9/test_coverage)](https://codeclimate.com/github/Krushovice/python-project-50/test_coverage)
+
+## Команды
+
+**You can use some helpful commands:**
+
+```
+   make install - poetry install
+
+   make build
+
+   make package-install - helps you to install package
+
+```
 
 ## Compares two json files
 
