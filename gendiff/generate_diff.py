@@ -1,10 +1,10 @@
 from gendiff.diff import diff
-from gendiff.parser import get_content
+from gendiff.parser import get_data
 from gendiff.formatters.formater import apply_format
 
 
 def generate_diff(path1, path2, format='stylish'):
-    content1 = get_content(path1)
-    content2 = get_content(path2)
-    result = diff(content1, content2)
+    data1 = get_data(path1)
+    data2 = get_data(path2)
+    result = diff(data1, data2)
     return apply_format(result, format)
