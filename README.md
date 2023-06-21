@@ -7,7 +7,7 @@
 
 This is my second project for hexlet.
 
-It's Show differences between different files in yaml and json format.
+It's show differences between different files in yaml and json format.
 
 You can clone the repository with: <https://github.com/Krushovice/python-project-50>
 
