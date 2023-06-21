@@ -12,19 +12,19 @@ def to_str(value):
 
 def walk(node, path=''):
     result = []
-    for key, value in node.items():
-        current_path = f"{path}{value['key']}"
+    for key, val in node.items():
+        current_path = f"{path}{val['key']}"
         start_line = f"Property '{current_path}'"
-        if value['operation'] == 'changed':
+        if val['operation'] == 'changed':
             result.append(f"{start_line} was updated. "
-                          f"From {to_str(value['old'])} to {to_str(value['new'])}")
-        if value['operation'] == 'nested':
-            result.append(walk(value['value'], current_path + '.'))
-        if value['operation'] == 'removed':
+                          f"From {to_str(val['old'])} to {to_str(val['new'])}")
+        if val['operation'] == 'nested':
+            result.append(walk(val['value'], current_path + '.'))
+        if val['operation'] == 'removed':
             result.append(f"{start_line} was removed")
-        if value['operation'] == 'added':
+        if val['operation'] == 'added':
             result.append(f"{start_line} was added "
-                          f"with value: {to_str(value['value'])}")
+                          f"with value: {to_str(val['value'])}")
     return '\n'.join(result)
 
 
